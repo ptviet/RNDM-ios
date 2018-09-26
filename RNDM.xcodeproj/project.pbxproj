@@ -8,11 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		4B095782215B061700E8284E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B095781215B061700E8284E /* AppDelegate.swift */; };
-		4B095784215B061700E8284E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B095783215B061700E8284E /* ViewController.swift */; };
+		4B095784215B061700E8284E /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B095783215B061700E8284E /* MainVC.swift */; };
 		4B095787215B061700E8284E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B095785215B061700E8284E /* Main.storyboard */; };
 		4B095789215B061800E8284E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B095788215B061800E8284E /* Assets.xcassets */; };
 		4B09578C215B061800E8284E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B09578A215B061800E8284E /* LaunchScreen.storyboard */; };
 		4B095794215B08E800E8284E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B095793215B08E800E8284E /* GoogleService-Info.plist */; };
+		4B75AADB215B1F6D00719763 /* AddThoughtVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B75AADA215B1F6D00719763 /* AddThoughtVC.swift */; };
+		4B75AAE0215B27C800719763 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B75AADF215B27C800719763 /* Constants.swift */; };
+		4B75AAE2215B31AC00719763 /* Thought.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B75AAE1215B31AC00719763 /* Thought.swift */; };
+		4B75AAE4215B34D200719763 /* ThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B75AAE3215B34D200719763 /* ThoughtCell.swift */; };
 		A9238533E19F4F7FADC4C0FF /* Pods_RNDM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 935B43B917569C7AC8A85E2C /* Pods_RNDM.framework */; };
 /* End PBXBuildFile section */
 
@@ -20,12 +24,16 @@
 		04ED86ED846921147828B994 /* Pods-RNDM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNDM.release.xcconfig"; path = "Pods/Target Support Files/Pods-RNDM/Pods-RNDM.release.xcconfig"; sourceTree = "<group>"; };
 		4B09577E215B061700E8284E /* RNDM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RNDM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B095781215B061700E8284E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4B095783215B061700E8284E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4B095783215B061700E8284E /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		4B095786215B061700E8284E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4B095788215B061800E8284E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B09578B215B061800E8284E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B09578D215B061800E8284E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B095793215B08E800E8284E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4B75AADA215B1F6D00719763 /* AddThoughtVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThoughtVC.swift; sourceTree = "<group>"; };
+		4B75AADF215B27C800719763 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4B75AAE1215B31AC00719763 /* Thought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thought.swift; sourceTree = "<group>"; };
+		4B75AAE3215B34D200719763 /* ThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtCell.swift; sourceTree = "<group>"; };
 		935B43B917569C7AC8A85E2C /* Pods_RNDM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RNDM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAB9961CCBEAF4FBE2819E19 /* Pods-RNDM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNDM.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RNDM/Pods-RNDM.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,8 +80,11 @@
 		4B095780215B061700E8284E /* RNDM */ = {
 			isa = PBXGroup;
 			children = (
+				4B75AADE215B27BA00719763 /* Utilities */,
+				4B75AADD215B1F7D00719763 /* Model */,
+				4B75AADC215B1F7800719763 /* View */,
+				4B095795215B0CCD00E8284E /* Controller */,
 				4B095781215B061700E8284E /* AppDelegate.swift */,
-				4B095783215B061700E8284E /* ViewController.swift */,
 				4B095785215B061700E8284E /* Main.storyboard */,
 				4B095788215B061800E8284E /* Assets.xcassets */,
 				4B09578A215B061800E8284E /* LaunchScreen.storyboard */,
@@ -81,6 +92,39 @@
 				4B095793215B08E800E8284E /* GoogleService-Info.plist */,
 			);
 			path = RNDM;
+			sourceTree = "<group>";
+		};
+		4B095795215B0CCD00E8284E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4B095783215B061700E8284E /* MainVC.swift */,
+				4B75AADA215B1F6D00719763 /* AddThoughtVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4B75AADC215B1F7800719763 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4B75AAE3215B34D200719763 /* ThoughtCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4B75AADD215B1F7D00719763 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4B75AAE1215B31AC00719763 /* Thought.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4B75AADE215B27BA00719763 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4B75AADF215B27C800719763 /* Constants.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		EA6E0D1BB905EE7E844EE2C5 /* Frameworks */ = {
@@ -220,8 +264,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B095784215B061700E8284E /* ViewController.swift in Sources */,
+				4B75AADB215B1F6D00719763 /* AddThoughtVC.swift in Sources */,
+				4B75AAE2215B31AC00719763 /* Thought.swift in Sources */,
+				4B095784215B061700E8284E /* MainVC.swift in Sources */,
+				4B75AAE4215B34D200719763 /* ThoughtCell.swift in Sources */,
 				4B095782215B061700E8284E /* AppDelegate.swift in Sources */,
+				4B75AAE0215B27C800719763 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
