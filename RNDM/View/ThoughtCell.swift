@@ -8,8 +8,8 @@ class ThoughtCell: UITableViewCell {
   @IBOutlet weak var timestampLbl: UILabel!
   @IBOutlet weak var thoughtTxtLbl: UILabel!
   @IBOutlet weak var likesImg: UIImageView!
-  @IBOutlet weak var LikesNumLbl: UILabel!
-  
+  @IBOutlet weak var likesNumLbl: UILabel!
+  @IBOutlet weak var commentsNumLbl: UILabel!
   // Variables
   private var thought: Thought!
   
@@ -41,7 +41,8 @@ class ThoughtCell: UITableViewCell {
     usernameLbl.text = thought.username
     timestampLbl.text = timestamp
     thoughtTxtLbl.text = thought.thoughtTxt
-    LikesNumLbl.text = "\(thought.numLikes!)"
+    likesNumLbl.text = "\(thought.numLikes!)"
+    commentsNumLbl.text = "\(thought.numComments!)"
   }
   
 }

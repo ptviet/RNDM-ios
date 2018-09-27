@@ -17,6 +17,13 @@
 		4B75AAE0215B27C800719763 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B75AADF215B27C800719763 /* Constants.swift */; };
 		4B75AAE2215B31AC00719763 /* Thought.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B75AAE1215B31AC00719763 /* Thought.swift */; };
 		4B75AAE4215B34D200719763 /* ThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B75AAE3215B34D200719763 /* ThoughtCell.swift */; };
+		4B75AAE6215B4E7E00719763 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B75AAE5215B4E7E00719763 /* LoginVC.swift */; };
+		4B75AAE8215B4FAA00719763 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B75AAE7215B4FAA00719763 /* RegisterVC.swift */; };
+		4BC29791215C5B7E0046383D /* ThoughtCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC29790215C5B7E0046383D /* ThoughtCategory.swift */; };
+		4BC29793215C60FB0046383D /* AddCommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC29792215C60FB0046383D /* AddCommentVC.swift */; };
+		4BC29795215C69340046383D /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC29794215C69340046383D /* CommentCell.swift */; };
+		4BC29797215C694E0046383D /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC29796215C694E0046383D /* UIViewExt.swift */; };
+		4BC2979A215C6AFB0046383D /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC29799215C6AFB0046383D /* Comment.swift */; };
 		A9238533E19F4F7FADC4C0FF /* Pods_RNDM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 935B43B917569C7AC8A85E2C /* Pods_RNDM.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +41,13 @@
 		4B75AADF215B27C800719763 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4B75AAE1215B31AC00719763 /* Thought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thought.swift; sourceTree = "<group>"; };
 		4B75AAE3215B34D200719763 /* ThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtCell.swift; sourceTree = "<group>"; };
+		4B75AAE5215B4E7E00719763 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		4B75AAE7215B4FAA00719763 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		4BC29790215C5B7E0046383D /* ThoughtCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtCategory.swift; sourceTree = "<group>"; };
+		4BC29792215C60FB0046383D /* AddCommentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentVC.swift; sourceTree = "<group>"; };
+		4BC29794215C69340046383D /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		4BC29796215C694E0046383D /* UIViewExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
+		4BC29799215C6AFB0046383D /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		935B43B917569C7AC8A85E2C /* Pods_RNDM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RNDM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAB9961CCBEAF4FBE2819E19 /* Pods-RNDM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNDM.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RNDM/Pods-RNDM.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +94,7 @@
 		4B095780215B061700E8284E /* RNDM */ = {
 			isa = PBXGroup;
 			children = (
+				4BC29798215C69530046383D /* Extensions */,
 				4B75AADE215B27BA00719763 /* Utilities */,
 				4B75AADD215B1F7D00719763 /* Model */,
 				4B75AADC215B1F7800719763 /* View */,
@@ -99,6 +114,9 @@
 			children = (
 				4B095783215B061700E8284E /* MainVC.swift */,
 				4B75AADA215B1F6D00719763 /* AddThoughtVC.swift */,
+				4B75AAE5215B4E7E00719763 /* LoginVC.swift */,
+				4B75AAE7215B4FAA00719763 /* RegisterVC.swift */,
+				4BC29792215C60FB0046383D /* AddCommentVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -107,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				4B75AAE3215B34D200719763 /* ThoughtCell.swift */,
+				4BC29794215C69340046383D /* CommentCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -115,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				4B75AAE1215B31AC00719763 /* Thought.swift */,
+				4BC29799215C6AFB0046383D /* Comment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -123,8 +143,17 @@
 			isa = PBXGroup;
 			children = (
 				4B75AADF215B27C800719763 /* Constants.swift */,
+				4BC29790215C5B7E0046383D /* ThoughtCategory.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		4BC29798215C69530046383D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4BC29796215C694E0046383D /* UIViewExt.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		EA6E0D1BB905EE7E844EE2C5 /* Frameworks */ = {
@@ -231,6 +260,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-RNDM/Pods-RNDM-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
@@ -243,6 +273,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
@@ -264,10 +295,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BC29797215C694E0046383D /* UIViewExt.swift in Sources */,
 				4B75AADB215B1F6D00719763 /* AddThoughtVC.swift in Sources */,
+				4B75AAE8215B4FAA00719763 /* RegisterVC.swift in Sources */,
 				4B75AAE2215B31AC00719763 /* Thought.swift in Sources */,
+				4BC29795215C69340046383D /* CommentCell.swift in Sources */,
+				4B75AAE6215B4E7E00719763 /* LoginVC.swift in Sources */,
+				4BC29793215C60FB0046383D /* AddCommentVC.swift in Sources */,
 				4B095784215B061700E8284E /* MainVC.swift in Sources */,
+				4BC2979A215C6AFB0046383D /* Comment.swift in Sources */,
 				4B75AAE4215B34D200719763 /* ThoughtCell.swift in Sources */,
+				4BC29791215C5B7E0046383D /* ThoughtCategory.swift in Sources */,
 				4B095782215B061700E8284E /* AppDelegate.swift in Sources */,
 				4B75AAE0215B27C800719763 /* Constants.swift in Sources */,
 			);

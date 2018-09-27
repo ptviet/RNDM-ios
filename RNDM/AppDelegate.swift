@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  RNDM
-//
-//  Created by Steven Phan on 26/9/18.
-//  Copyright © 2018 SP. All rights reserved.
-//
 
 import UIKit
 import Firebase

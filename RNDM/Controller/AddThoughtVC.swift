@@ -6,7 +6,6 @@ class AddThoughtVC: UIViewController, UITextViewDelegate {
   
   // Outlets
   @IBOutlet private weak var categorySegment: UISegmentedControl!
-  @IBOutlet private weak var usernameTxtField: UITextField!
   @IBOutlet private weak var thoughtTxtView: UITextView!
   @IBOutlet private weak var postBtn: UIButton!
   @IBOutlet private weak var spinner: UIActivityIndicatorView!
@@ -57,9 +56,10 @@ class AddThoughtVC: UIViewController, UITextViewDelegate {
   }
   
   @IBAction func onPostBtnPressed(_ sender: Any) {
-    if thoughtTxtView.text != "" &&  usernameTxtField.text != "" {
-      guard let thought = thoughtTxtView.text else { return }
-      guard let username = usernameTxtField.text else { return }
+    guard let thought = thoughtTxtView.text else { return }
+    
+    if thought != "" {
+      guard let username = Auth.auth().currentUser?.displayName else { return }
       spinner.isHidden = false
       spinner.startAnimating()
       

@@ -2,13 +2,6 @@
 import UIKit
 import Firebase
 
-enum ThoughtCategory: String {
-  case funny = "funny"
-  case serious = "serious"
-  case crazy = "crazy"
-  case popular = "popular"
-}
-
 class MainVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
   
   // Outlets
@@ -20,6 +13,7 @@ class MainVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
   private var thoughtsCollectionRef: CollectionReference!
   private var thoughtsListener: ListenerRegistration!
   private var selectedCategory = ThoughtCategory.funny.rawValue
+  private var handler: AuthStateDidChangeListenerHandle?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -34,13 +28,26 @@ class MainVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
-    setListner()
-    
+    handler = Auth.auth().addStateDidChangeListener({ (auth, user) in
+      if user == nil {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginVC = storyboard.instantiateViewController(withIdentifier: "loginVC")
+        self.present(loginVC, animated: true, completion: nil)
+        
+      } else {
+        self.setListner()
+      }
+      
+    })
+
   }
   
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
-    thoughtsListener.remove()
+    if thoughtsListener != nil {
+      thoughtsListener.remove()
+    }
+    
   }
   
   func setListner() {
@@ -90,6 +97,15 @@ class MainVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     setListner()
   }
   
+  @IBAction func onLogoutBtnPressed(_ sender: Any) {
+    let firebaseAuth = Auth.auth()
+    do {
+      try firebaseAuth.signOut()
+    } catch let error as NSError {
+      debugPrint("Error signing out: \(error)")
+    }
+  }
+  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return thoughts.count
   }
@@ -99,6 +115,21 @@ class MainVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
       cell.configureCell(thought: thoughts[indexPath.row])
       return cell
     } else { return UITableViewCell() }
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    performSegue(withIdentifier: "toAddCommentVC", sender: thoughts[indexPath.row])
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "toAddCommentVC" {
+      if let destinationVC = segue.destination as? AddCommentVC {
+        if let thought = sender as? Thought {
+          destinationVC.thought = thought
+        }
+      }
+      
+    }
   }
   
 }
