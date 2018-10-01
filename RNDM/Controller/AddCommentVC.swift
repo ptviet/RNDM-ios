@@ -8,6 +8,7 @@ class AddCommentVC: UIViewController, UITableViewDelegate, UITableViewDataSource
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var commentTxtField: UITextField!
   @IBOutlet weak var keyboardView: UIView!
+  @IBOutlet weak var sendBtn: UIButton!
   
   // Variables
   var comments = [Comment]()
@@ -31,9 +32,9 @@ class AddCommentVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     tableView.estimatedRowHeight = 100
     tableView.rowHeight = UITableView.automaticDimension
     
-    let toggleKeyboard = UITapGestureRecognizer(target: self, action: #selector(handleToggleKeyboard))
+//    let toggleKeyboard = UITapGestureRecognizer(target: self, action: #selector(handleToggleKeyboard))
 //    toggleKeyboard.cancelsTouchesInView = false
-    view.addGestureRecognizer(toggleKeyboard)
+//    view.addGestureRecognizer(toggleKeyboard)
     
   }
   
@@ -66,6 +67,7 @@ class AddCommentVC: UIViewController, UITableViewDelegate, UITableViewDataSource
   @IBAction func onSendCommentPressed(_ sender: Any) {
     guard let comment = commentTxtField.text else { return }
     if comment != "" {
+      sendBtn.isEnabled = false
       firestore.runTransaction({ (transaction, errorPointer) -> Any? in
         var thoughtDoc: DocumentSnapshot
         
@@ -90,6 +92,7 @@ class AddCommentVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         if let error = error {
           debugPrint(error.localizedDescription)
         } else {
+          self.sendBtn.isEnabled = true
           self.commentTxtField.text = ""
           self.commentTxtField.resignFirstResponder()
         }
@@ -132,7 +135,8 @@ class AddCommentVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     let editAction = UIAlertAction(title: "Edit", style: .default) { (action) in
-      
+      self.performSegue(withIdentifier: "toUpdateCommentVC", sender: (comment, self.thought))
+      alert.dismiss(animated: true, completion: nil)
     }
     
     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -143,6 +147,14 @@ class AddCommentVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     present(alert, animated: true, completion: nil)
     
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let destination = segue.destination as? UpdateCommentVC {
+      if let commentData = sender as? (comment: Comment, thought: Thought) {
+        destination.commentData = commentData
+      }
+    }
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -107,7 +107,24 @@ class MainVC: UIViewController, UITableViewDataSource, UITableViewDelegate, Thou
   }
   
   func optionsTapped(thought: Thought) {
+    let alert = UIAlertController(title: "Actions", message: "Edit or Delete", preferredStyle: .actionSheet)
     
+    let deleteAction = UIAlertAction(title: "Delete", style: .default) { (action) in
+      self.thoughtsCollectionRef.document(thought.documentId).delete(completion: { (error) in
+        if let error = error {
+          debugPrint("Error deleting thought: \(error)")
+        } else {
+          alert.dismiss(animated: true, completion: nil)
+        }
+      })
+    }
+    
+    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+    
+    alert.addAction(deleteAction)
+    alert.addAction(cancelAction)
+    
+    present(alert, animated: true, completion: nil)
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
