@@ -12,5 +12,6 @@ let THOUGHT_TEXT = "thoughtTxt"
 let COMMENT_TEXT = "commentTxt"
 let TIMESTAMP = "timestamp"
 let USERNAME = "username"
+let USER_ID = "userId"
 
 let DATE_CREATED = "dateCreated"

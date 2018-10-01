@@ -2,8 +2,8 @@
 import UIKit
 import Firebase
 
-class AddCommentVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
-  
+class AddCommentVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CommentDelegate {
+
   // Outlets
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var commentTxtField: UITextField!
@@ -82,7 +82,8 @@ class AddCommentVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         let newCommentRef = self.thoughtRef.collection(COMMENTS_REF).document()
         transaction.setData([COMMENT_TEXT : comment,
                              TIMESTAMP: FieldValue.serverTimestamp(),
-                             USERNAME: self.username], forDocument: newCommentRef)
+                             USERNAME: self.username,
+                             USER_ID: Auth.auth().currentUser?.uid ?? ""], forDocument: newCommentRef)
         
         return nil
       }) { (object, error) in
@@ -97,6 +98,53 @@ class AddCommentVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
   }
   
+  func optionsTapped(comment: Comment) {
+    let alert = UIAlertController(title: "Actions", message: "Edit or Delete", preferredStyle: .actionSheet)
+    
+    let deleteAction = UIAlertAction(title: "Delete", style: .default) { (action) in
+      self.firestore.runTransaction({ (transaction, errorPointer) -> Any? in
+        var thoughtDoc: DocumentSnapshot
+        
+        do {
+          try thoughtDoc = transaction.getDocument(self.thoughtRef)
+          
+        } catch let error as NSError {
+          debugPrint(error.localizedDescription)
+          return nil
+        }
+        
+        guard let prevCommentsNum = thoughtDoc.data()?[NUM_COMMENTS] as? Int else { return nil }
+        transaction.updateData([NUM_COMMENTS : prevCommentsNum - 1], forDocument: self.thoughtRef)
+
+        let commentRef = self.firestore.collection(THOUGHTS_REF).document(self.thought.documentId).collection(COMMENTS_REF).document(comment.documentId)
+        
+        transaction.deleteDocument(commentRef)
+        
+        return nil
+      }) { (object, error) in
+        if let error = error {
+          debugPrint(error.localizedDescription)
+        } else {
+          alert.dismiss(animated: true, completion: nil)
+        }
+      }
+      
+    }
+    
+    let editAction = UIAlertAction(title: "Edit", style: .default) { (action) in
+      
+    }
+    
+    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+    
+    alert.addAction(deleteAction)
+    alert.addAction(editAction)
+    alert.addAction(cancelAction)
+    
+    present(alert, animated: true, completion: nil)
+    
+  }
+  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return comments.count
   }
@@ -104,7 +152,7 @@ class AddCommentVC: UIViewController, UITableViewDelegate, UITableViewDataSource
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as? CommentCell else { return UITableViewCell()}
     
-    cell.configureCell(comment: comments[indexPath.row])
+    cell.configureCell(comment: comments[indexPath.row], delegate: self)
     
     return cell
   }
